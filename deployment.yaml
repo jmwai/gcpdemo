@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flask-demo
+  name: flask
   labels:
-    app: app
+    app: flask
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: app
+      app: flask
   template:
     metadata:
       labels:
-        app: app
+        app: flask
     spec:
       containers:
-      - name: app
+      - name: flask
         image: gcr.io/k8s16-147307/flask-k8s:v1
         ports:
         - containerPort: 5000
