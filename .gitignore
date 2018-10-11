@@ -1,2 +1,4 @@
 venv
 commands.md
+*.pyc
+__pycache__

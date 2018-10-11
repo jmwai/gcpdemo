@@ -1,32 +1,38 @@
-from flask import Flask, request, render_template, g, jsonify
+import random
+
 import requests
+
+from flask import Flask, g, jsonify, render_template, request
 
 app = Flask(__name__)
 
 
 def nearby():
-    url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=150000&keyword=cofee&key=AIzaSyAfBOVn3dRaeJ78FgqLNsWFec84oIe4e6A'
+    fields = "photos,formatted_address,name"
+    location = "-26.204103,28.047304"
+    keyword = "coffee shop"
+    key = "AIzaSyAfBOVn3dRaeJ78FgqLNsWFec84oIe4e6A"
+    url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?fields={}&location={}&radius=150000&keyword={}&key={}"
+    url = url.format(fields, location, keyword, key)
     r = requests.get(url)   
     data = r.json()    
-    places = data["results"]   
-    data = []
-    for place in places:
+    results = data["results"]   
+    places = []
+    for result in results:
         try:
-            photo_ref = place['photos'][0]['photo_reference']
-            link = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={}&key={}".format(photo_ref, 'AIzaSyAfBOVn3dRaeJ78FgqLNsWFec84oIe4e6A')
+            photo_ref = result['photos'][0]['photo_reference']
+            link = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={}&key={}".format(photo_ref, key)
             obj = {
-                'name': place['name'],
+                'name': result['name'],
                 'photo': link
             }
-            data.append(obj)
+            places.append(obj)
         except KeyError:
             continue
-    return data
+    return places
 
 @app.route('/')
 def hello_world():
     places = nearby()
+    random.shuffle(places)
     return render_template('index.html', places=places)
-
-
-
