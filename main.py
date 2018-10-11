@@ -1,3 +1,3 @@
 
 def hello_world(request):
-    return 'Hello, World!'
+    return 'Hello, Pyconza!'
