@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: flask
-        image: gcr.io/k8s16-147307/pyconke-k8s:v1
+        image: gcr.io/k8s16-147307/pyconke-k8s:v2
         ports:
         - containerPort: 5000
