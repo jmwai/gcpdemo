@@ -10,7 +10,7 @@ app = Flask(__name__)
 def nearby():
     fields = "photos,formatted_address,name"
     location = "-1.308869,36.812077"
-    keyword = "coffee"
+    keyword = "apartment"
     key = "AIzaSyAfBOVn3dRaeJ78FgqLNsWFec84oIe4e6A"
     url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?fields={}&location={}&radius=150000&keyword={}&key={}"
     url = url.format(fields, location, keyword, key)
