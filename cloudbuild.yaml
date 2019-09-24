@@ -24,3 +24,15 @@ steps:
   args:
   - 'push'
   - 'gcr.io/$PROJECT_ID/cloud-build-demo:$SHORT_SHA'
+
+# This step deploys the new version of our container image
+# in the cloud-build-demo Kubernetes Engine cluster.
+  - name: 'gcr.io/cloud-builders/kubectl'
+  id: Deploy Image
+  args:
+  - 'apply'
+  - '-f'
+  - 'deployment.yaml'
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=cloud-build-demo'
