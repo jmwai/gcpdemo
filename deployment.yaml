@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: flask
-        image: gcr.io/k8s16-147307/cloud-build-demo:COMMIT_SHA
+        image: LATEST_IMAGE_TAG
         ports:
         - containerPort: 5000
