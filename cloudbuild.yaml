@@ -33,17 +33,10 @@ steps:
 
 # This step pushes the manifest back to hello-cloudbuild-env
 - name: 'gcr.io/cloud-builders/gcloud'
-  id: Push manifest
+  id: 'Show updated manifest'
   entrypoint: /bin/sh
-  args:
-  - '-c'
-  - |
-    set -x && \
-    git add deployment.yaml && \
-    git commit -m "Deploying image gcr.io/${PROJECT_ID}/cloud-build-demo:${SHORT_SHA}
-    Built from commit ${COMMIT_SHA} of repository cloud-build-demo
-    Author: $(git log --format='%an <%ae>' -n 1 HEAD)" && \
-    git push google cloudbuild
+  args: ['-c', 'cat deployment.yaml']
+  
 
 # This step deploys the new version of our container image
 # in the cloud-build-demo Kubernetes Engine cluster.
