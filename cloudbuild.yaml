@@ -13,7 +13,7 @@ steps:
   args:
   - 'build'
   - '-t'
-  - 'gcr.io/$PROJECT_ID/cloud-build-demo:$SHORT_SHA'
+  - 'gcr.io/$PROJECT_ID/cloud-build-demo:latest'
   - '.'
 
 # This step pushes the image to Container Registry
@@ -23,19 +23,19 @@ steps:
   id: Push Image
   args:
   - 'push'
-  - 'gcr.io/$PROJECT_ID/cloud-build-demo:$SHORT_SHA'
+  - 'gcr.io/$PROJECT_ID/cloud-build-demo:lates'
 
-# This step updates our manifest with the latest image tag
-- name: 'gcr.io/cloud-builders/gcloud'
-  id: 'Set New Image In Manifest'
-  entrypoint: /bin/sh
-  args: ['-c','sed -i "s,LATEST_IMAGE_TAG,gcr.io/$PROJECT_ID/cloud-build-demo:$SHORT_SHA," deployment.yaml']
+# # This step updates our manifest with the latest image tag
+# - name: 'gcr.io/cloud-builders/gcloud'
+#   id: 'Set New Image In Manifest'
+#   entrypoint: /bin/sh
+#   args: ['-c','sed -i "s,LATEST_IMAGE_TAG,gcr.io/$PROJECT_ID/cloud-build-demo:$SHORT_SHA," deployment.yaml']
 
-# This step pushes the manifest back to hello-cloudbuild-env
-- name: 'gcr.io/cloud-builders/gcloud'
-  id: 'Show updated manifest'
-  entrypoint: /bin/sh
-  args: ['-c', 'cat deployment.yaml']
+# # This step pushes the manifest back to hello-cloudbuild-env
+# - name: 'gcr.io/cloud-builders/gcloud'
+#   id: 'Show updated manifest'
+#   entrypoint: /bin/sh
+#   args: ['-c', 'cat deployment.yaml']
   
 
 # This step deploys the new version of our container image

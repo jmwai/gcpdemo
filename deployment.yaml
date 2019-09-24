@@ -16,6 +16,7 @@ spec:
     spec:
       containers:
       - name: flask
-        image: LATEST_IMAGE_TAG
+        image: gcr.io/k8s16-147307/cloud-build-demo:latest
         ports:
         - containerPort: 5000
+      imagePullPolicy: Always
