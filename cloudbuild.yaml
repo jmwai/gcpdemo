@@ -23,7 +23,7 @@ steps:
   id: Push Image
   args:
   - 'push'
-  - 'gcr.io/$PROJECT_ID/cloud-build-demo:lates'
+  - 'gcr.io/$PROJECT_ID/cloud-build-demo:latest'
 
 # # This step updates our manifest with the latest image tag
 # - name: 'gcr.io/cloud-builders/gcloud'
