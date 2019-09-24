@@ -42,10 +42,9 @@ steps:
 # in the cloud-build-demo Kubernetes Engine cluster.
 - name: 'gcr.io/cloud-builders/kubectl'
   id: Apply Manifest
-  args:
-  - 'apply'
-  - '-f'
-  - 'deployment.yaml'
+  args:   
+  - 'rollout'
+  - 'restart'
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
   - 'CLOUDSDK_CONTAINER_CLUSTER=cloud-build-demo'
