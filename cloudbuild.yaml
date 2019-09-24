@@ -28,7 +28,8 @@ steps:
 # This step updates our manifest with the latest image tag
 - name: 'gcr.io/cloud-builders/gcloud'
   id: 'Set New Image In Manifest'
-  args: ['bash','-c','sed -i "s,LATEST_IMAGE_TAG,gcr.io/$PROJECT_ID/cloud-build-demo:$SHORT_SHA," deployment.yaml']
+  entrypoint: /bin/sh
+  args: ['-c','sed -i "s,LATEST_IMAGE_TAG,gcr.io/$PROJECT_ID/cloud-build-demo:$SHORT_SHA," deployment.yaml']
 
 # This step pushes the manifest back to hello-cloudbuild-env
 - name: 'gcr.io/cloud-builders/gcloud'
