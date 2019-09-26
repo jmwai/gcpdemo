@@ -32,7 +32,7 @@ steps:
   args: ['-c','sed -i "s,LATEST_IMAGE_TAG,gcr.io/$PROJECT_ID/cloud-build-demo:$SHORT_SHA," deployment.yaml']
 
 
-# This step deploys the new version of our container image
+# This step deploys to the new version of our container image
 # in the cloud-build-demo Kubernetes Engine cluster.
 - name: 'gcr.io/cloud-builders/kubectl'
   id: Apply Manifest
