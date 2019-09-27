@@ -13,7 +13,7 @@ def nearby():
     # keyword = "coworking space"
     # keyword = "coffee shop"
     keyword = "bars"
-    key = "AIzaSyAfBOVn3dRaeJ78FgqLNsWFec84oIe4e6A"
+    key = "key"
     url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?fields={}&location={}&radius=150000&keyword={}&key={}"
     url = url.format(fields, location, keyword, key)
     r = requests.get(url)   
