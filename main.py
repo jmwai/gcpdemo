@@ -11,7 +11,7 @@ def nearby():
     fields = "photos,formatted_address,name"
     location = "5.5698567,-0.169646"
     keyword = "coffee shop"
-    key = "AIzaSyAfBOVn3dRaeJ78FgqLNsWFec84oIe4e6A"
+    key = "key"
     url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?fields={}&location={}&radius=150000&keyword={}&key={}"
     url = url.format(fields, location, keyword, key)
     r = requests.get(url)   
