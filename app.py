@@ -11,7 +11,7 @@ def nearby():
     fields = "photos,formatted_address,name"
     location = "-1.2889978,36.7833679"
     keyword = "coworking space"
-    key = "AIzaSyAfBOVn3dRaeJ78FgqLNsWFec84oIe4e6A"
+    key = "key"
     url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?fields={}&location={}&radius=150000&keyword={}&key={}"
     url = url.format(fields, location, keyword, key)
     r = requests.get(url)   
@@ -21,7 +21,7 @@ def nearby():
     for result in results:
         try:
             photo_ref = result['photos'][0]['photo_reference']
-            link = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={}&key={}".format(photo_ref, key)
+            link = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={}&key={}".format(photo_ref, kkeyey)
             obj = {
                 'name': result['name'],
                 'photo': link
